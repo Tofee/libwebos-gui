@@ -14,7 +14,6 @@ class OffscreenNativeWindowBuffer : public BaseNativeWindowBuffer
 protected:
 	OffscreenNativeWindowBuffer(unsigned int width, unsigned int height,
 								unsigned int format, unsigned int usage);
-	void* vaddr;
 
 public:
 	OffscreenNativeWindowBuffer();
@@ -24,15 +23,10 @@ public:
 
 	buffer_handle_t getHandle();
 
-	bool locked() { return _locked; }
-	void lock() { _locked = true; }
-	void unlock() { _locked = false; }
-
 	unsigned int index();
 	void setIndex(unsigned int index);
 
 private:
-	bool _locked;
 	unsigned int _index;
 };
 
@@ -41,7 +35,6 @@ class OffscreenNativeWindow : public BaseNativeWindow
 public:
 	OffscreenNativeWindow(unsigned int width, unsigned int height, unsigned int format = 5);
 	~OffscreenNativeWindow();
-	OffscreenNativeWindowBuffer* getFrontBuffer();
 
 	virtual void postBuffer(OffscreenNativeWindowBuffer *buffer) { }
 	virtual void waitForBuffer(OffscreenNativeWindowBuffer *buffer) { }
