@@ -190,7 +190,7 @@ OffscreenNativeWindowBuffer* OffscreenNativeWindow::allocateBuffer()
 	return buffer;
 }
 
-int OffscreenNativeWindow::dequeueBuffer(BaseNativeWindowBuffer **buffer)
+int OffscreenNativeWindow::dequeueBuffer(BaseNativeWindowBuffer **buffer, int *fenceFd)
 {
 	TRACE("%s ===================================\n",__PRETTY_FUNCTION__);
 
@@ -233,7 +233,7 @@ int OffscreenNativeWindow::lockBuffer(BaseNativeWindowBuffer* buffer)
 	return NO_ERROR;
 }
 
-int OffscreenNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer)
+int OffscreenNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer, int fenceFd)
 {
 	OffscreenNativeWindowBuffer* buf = static_cast<OffscreenNativeWindowBuffer*>(buffer);
 
@@ -249,7 +249,7 @@ int OffscreenNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer)
 	return NO_ERROR;
 }
 
-int OffscreenNativeWindow::cancelBuffer(BaseNativeWindowBuffer* buffer)
+int OffscreenNativeWindow::cancelBuffer(BaseNativeWindowBuffer* buffer, int fenceFd)
 {
 	TRACE("%s\n",__PRETTY_FUNCTION__);
 

@@ -3,7 +3,7 @@
 
 #include <linux/fb.h>
 #include <android/hardware/gralloc.h>
-#include <EGL/eglhybris.h>
+#include <hybris/eglplatformcommon/nativewindowbase.h>
 
 #define NUM_BUFFERS 3
 
@@ -53,10 +53,10 @@ public:
 protected:
 	// overloads from BaseNativeWindow
 	virtual int setSwapInterval(int interval);
-	virtual int dequeueBuffer(BaseNativeWindowBuffer **buffer);
+	virtual int dequeueBuffer(BaseNativeWindowBuffer **buffer, int *fenceFd);
+	virtual int queueBuffer(BaseNativeWindowBuffer* buffer, int fenceFd);
+	virtual int cancelBuffer(BaseNativeWindowBuffer* buffer, int fenceFd);
 	virtual int lockBuffer(BaseNativeWindowBuffer* buffer);
-	virtual int queueBuffer(BaseNativeWindowBuffer* buffer);
-	virtual int cancelBuffer(BaseNativeWindowBuffer* buffer);
 	virtual unsigned int type() const;
 	virtual unsigned int width() const;
 	virtual unsigned int height() const;
