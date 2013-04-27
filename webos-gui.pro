@@ -29,6 +29,8 @@ SOURCES += \
     src/OffscreenNativeWindow.cpp \
     src/OffscreenNativeWindowBuffer.cpp
 
+LIBS += -lhybris-eglplatformcommon
+
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
 
