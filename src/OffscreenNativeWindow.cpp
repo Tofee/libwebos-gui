@@ -109,6 +109,8 @@ int OffscreenNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer, int fence
 
 	OffscreenNativeWindowBuffer* buf = static_cast<OffscreenNativeWindowBuffer*>(buffer);
 
+	buf->common.incRef(&buf->common);
+
 	m_frontbuffer++;
 	if (m_frontbuffer == NUM_BUFFERS)
 		m_frontbuffer = 0;
